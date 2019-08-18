@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveScore.Models", "src\LiveScore.Models\LiveScore.Models.csproj", "{BFEDDF44-A72A-47F8-B56F-D8A86062ED4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveScore.Admin", "src\LiveScore.Admin\LiveScore.Admin.csproj", "{70C08DE9-8F3C-44F7-9E88-5805CBE11CD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +15,9 @@ Global
 		{BFEDDF44-A72A-47F8-B56F-D8A86062ED4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFEDDF44-A72A-47F8-B56F-D8A86062ED4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFEDDF44-A72A-47F8-B56F-D8A86062ED4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70C08DE9-8F3C-44F7-9E88-5805CBE11CD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70C08DE9-8F3C-44F7-9E88-5805CBE11CD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70C08DE9-8F3C-44F7-9E88-5805CBE11CD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70C08DE9-8F3C-44F7-9E88-5805CBE11CD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
