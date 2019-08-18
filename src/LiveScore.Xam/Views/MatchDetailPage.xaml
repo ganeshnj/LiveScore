@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="LiveScore.Xam.Views.MatchDetailPage"
+             Title="{Binding Title}">
+    <StackLayout Spacing="20"
+                 Padding="16">
+        <Label Text="{Binding Path=Match.Status}" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Column="0">
+                <Label Text="{Binding Path=Match.Team1.Name}"
+                       FontSize="Large" />
+                <Label Text="{Binding Path=Match.Team1Score}"
+                       FontSize="Default"
+                       FontAttributes="Bold"/>
+            </StackLayout>
+            <StackLayout Grid.Column="1">
+                <Label Text="{Binding Path=Match.Team2.Name}"
+                       FontSize="Large" />
+                <Label Text="{Binding Path=Match.Team2Score}"
+                       FontSize="Default"
+                       FontAttributes="Bold"/>
+            </StackLayout>
+        </Grid>
+
+    </StackLayout>
+</ContentPage>

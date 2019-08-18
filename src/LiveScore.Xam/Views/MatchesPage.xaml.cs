@@ -16,40 +16,36 @@ namespace LiveScore.Xam.Views
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class ItemsPage : ContentPage
+    public partial class MatchesPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        MatchesViewModel viewModel;
 
-        public ItemsPage()
+        public MatchesPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = viewModel = new MatchesViewModel();
+            MatchesListView.ItemSelected += MatchesListView_ItemSelected;
         }
 
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        private async void MatchesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var item = args.SelectedItem as Item;
+            var item = e.SelectedItem as MatchViewModel;
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Navigation.PushAsync(new MatchDetailPage(new MatchDetailViewModel(item)));
 
             // Manually deselect item.
-            ItemsListView.SelectedItem = null;
-        }
-
-        async void AddItem_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+            MatchesListView.SelectedItem = null;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            if (viewModel.Matches.Count == 0)
+                viewModel.LoadMatchesCommand.Execute(null);
         }
     }
 }

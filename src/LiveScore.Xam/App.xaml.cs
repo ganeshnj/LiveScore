@@ -13,7 +13,7 @@ namespace LiveScore.Xam
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            DependencyService.Register<MatchesService>();
             MainPage = new MainPage();
         }
 

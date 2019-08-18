@@ -11,29 +11,22 @@ namespace LiveScore.Xam.Views
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class ItemDetailPage : ContentPage
+    public partial class MatchDetailPage : ContentPage
     {
-        ItemDetailViewModel viewModel;
+        MatchDetailViewModel viewModel;
 
-        public ItemDetailPage(ItemDetailViewModel viewModel)
+        public MatchDetailPage(MatchDetailViewModel viewModel)
         {
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
         }
 
-        public ItemDetailPage()
+        public MatchDetailPage()
         {
             InitializeComponent();
 
-            var item = new Item
-            {
-                Text = "Item 1",
-                Description = "This is an item description."
-            };
-
-            viewModel = new ItemDetailViewModel(item);
-            BindingContext = viewModel;
+            BindingContext = viewModel = new MatchDetailViewModel();
         }
     }
 }

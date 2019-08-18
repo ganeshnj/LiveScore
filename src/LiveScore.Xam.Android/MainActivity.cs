@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using System.Net;
 
 namespace LiveScore.Xam.Droid
 {
@@ -18,6 +19,10 @@ namespace LiveScore.Xam.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+
+#if DEBUG
+            ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
+#endif
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

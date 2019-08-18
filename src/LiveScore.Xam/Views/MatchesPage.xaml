@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="LiveScore.Xam.Views.MatchesPage"
+             Title="{Binding Title}"
+             x:Name="BrowseMatchesPage">
+    <StackLayout>
+        <ListView x:Name="MatchesListView"
+                  ItemsSource="{Binding Matches}"
+                  VerticalOptions="FillAndExpand"
+                  HasUnevenRows="true"
+                  RefreshCommand="{Binding LoadMatchesCommand}"
+                  IsPullToRefreshEnabled="true"
+                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                  CachingStrategy="RecycleElement">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Padding="18"
+                                         Grid.Column="0">
+                                <Label Text="{Binding Team1.Name}"
+                                       FontSize="Default" />
+                                <Label Text="{Binding Team2.Name}"
+                                       FontSize="Default" />
+                            </StackLayout>
+                            <StackLayout Padding="18"
+                                         Grid.Column="1">
+                                <Label Text="{Binding Status}"
+                                       FontSize="Default"
+                                       VerticalOptions="Center" />
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

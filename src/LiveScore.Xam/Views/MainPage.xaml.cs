@@ -21,7 +21,7 @@ namespace LiveScore.Xam.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.Matches, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -30,8 +30,8 @@ namespace LiveScore.Xam.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                    case (int)MenuItemType.Matches:
+                        MenuPages.Add(id, new NavigationPage(new MatchesPage()));
                         break;
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));

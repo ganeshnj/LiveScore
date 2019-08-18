@@ -6,7 +6,7 @@ namespace LiveScore.Xam.Models
 {
     public enum MenuItemType
     {
-        Browse,
+        Matches,
         About
     }
     public class HomeMenuItem
