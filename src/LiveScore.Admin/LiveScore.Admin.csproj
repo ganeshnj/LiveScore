@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Api\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LiveScore.Models\LiveScore.Models.csproj" />
