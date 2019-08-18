@@ -14,6 +14,8 @@ namespace LiveScore.Xam
             InitializeComponent();
 
             DependencyService.Register<MatchesService>();
+            DependencyService.Register<MatchHubService>();
+
             MainPage = new MainPage();
         }
 

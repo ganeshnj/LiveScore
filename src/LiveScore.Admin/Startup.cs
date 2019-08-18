@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LiveScore.Admin.Data;
+using LiveScore.Admin.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -36,6 +37,7 @@ namespace LiveScore.Admin
             services.AddDbContext<AdminContext>(options =>
                           options.UseSqlServer(Configuration.GetConnectionString("LiveScoreDatabase")));
 
+            services.AddSignalR();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -64,6 +66,12 @@ namespace LiveScore.Admin
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<MatchHub>("/hubs/match");
+            });
+
         }
     }
 }

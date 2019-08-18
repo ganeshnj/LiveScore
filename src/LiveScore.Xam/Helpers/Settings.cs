@@ -28,6 +28,15 @@ namespace LiveScore.Xam.Helpers
 #endif
         }
 
+        public static string HubServer
+        {
+#if DEBUG
+            get => $"{ServerIP}:5001/hubs";
+#else
+            get => $"{ServerIP}"
+#endif
+        }
+
         public static bool UseHttps
         {
             get => Preferences.Get(nameof(UseHttps), defaultHttps);

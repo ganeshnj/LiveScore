@@ -8,16 +8,20 @@ using Microsoft.EntityFrameworkCore;
 using LiveScore.Admin.Data;
 using LiveScore.Models;
 using LiveScore.Admin.Models;
+using Microsoft.AspNetCore.SignalR;
+using LiveScore.Admin.Hubs;
 
 namespace LiveScore.Admin.Controllers
 {
     public class MatchesController : Controller
     {
         private readonly AdminContext _context;
+        private readonly IHubContext<MatchHub> _matchHubContext;
 
-        public MatchesController(AdminContext context)
+        public MatchesController(AdminContext context, IHubContext<MatchHub> matchHubContext)
         {
             _context = context;
+            _matchHubContext = matchHubContext;
         }
 
         // GET: Matches
@@ -138,6 +142,15 @@ namespace LiveScore.Admin.Controllers
                 {
                     _context.Update(match);
                     await _context.SaveChangesAsync();
+
+                    var score = new Score()
+                    {
+                        MatchId = id,
+                        Team1Score = matchViewModel.Team1Score,
+                        Team2Score = matchViewModel.Team2Score
+                    };
+                    var group = _matchHubContext.Clients.Group(id.ToString());
+                    await group.SendAsync("ReceiveScore", id.ToString(), score);
                 }
                 catch (DbUpdateConcurrencyException)
                 {

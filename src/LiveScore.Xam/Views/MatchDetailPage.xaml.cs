@@ -28,5 +28,21 @@ namespace LiveScore.Xam.Views
 
             BindingContext = viewModel = new MatchDetailViewModel();
         }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            await viewModel.MatchHubService.ConnectAsync();
+            await viewModel.MatchHubService.AddToMatchAsync(viewModel.Match.Id.ToString());
+        }
+
+        protected override async void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            await viewModel.MatchHubService.RemoveFromMatchAsync(viewModel.Match.Id.ToString());
+            await viewModel.MatchHubService.DisconnectAsync();
+        }
     }
 }

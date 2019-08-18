@@ -13,6 +13,7 @@ namespace LiveScore.Xam.ViewModels
     public class BaseViewModel : ExtendedBindableObject
     {
         public IMatchesService MatchesService => DependencyService.Get<IMatchesService>() ?? new MatchesService();
+        public IMatchHubService MatchHubService => DependencyService.Get<IMatchHubService>() ?? new MatchHubService();
 
         bool isBusy = false;
         public bool IsBusy
@@ -26,6 +27,11 @@ namespace LiveScore.Xam.ViewModels
         {
             get { return title; }
             set { SetProperty(ref title, value); }
+        }
+
+        public BaseViewModel()
+        {
+            MatchHubService.Init();
         }
     }
 }
